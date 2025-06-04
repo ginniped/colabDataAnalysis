@@ -1,1 +1,41 @@
+# Humidity Sensor Statistical Analysis
 
+This notebook performs a rapid and informative statistical analysis of data collected during humidity sensor tests under variable pressure.
+
+## 🔬 Test Context
+
+The test setup is as follows:
+
+- A **humidity sensor** is placed on a **moist wooden block**.
+- The block is subjected to **variable mechanical pressure** using a press.
+- At each pressure level, the **sensor's voltage output** is recorded.
+- The aim is to analyze the correlation between **humidity percentage**, **pressure**, and the resulting **voltage signal**.
+
+## 📊 What the Code Does
+
+1. **Loads Excel data** containing sensor readings.
+2. **Cleans and reshapes** the dataset for analysis.
+3. Computes **mean, standard deviation, and variance** of voltage values across humidity and pressure combinations.
+4. Produces **plots** of voltage response at various pressure levels.
+5. Performs **linear regression** at selected pressures to estimate sensitivity.
+6. Tries four regression models per pressure level:
+   - Linear Regression
+   - Polynomial Regression (degree 3)
+   - Random Forest
+   - Support Vector Regression (SVR)
+7. Automatically **selects the best-fitting model** using the R² score and visualizes it.
+
+## 📁 Input File Format
+
+Make sure your Excel file (`c.xls`) contains:
+
+- A sheet named `Foglio1`
+- A first column representing **Pressure (MPa)**
+- Subsequent columns representing different **Humidity levels (%)** and corresponding **Voltage readings**
+
+## 🧰 Dependencies
+
+This code requires the following Python libraries:
+
+```bash
+pip install pandas numpy matplotlib seaborn scikit-learn openpyxl
